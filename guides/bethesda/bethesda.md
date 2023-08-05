@@ -2,6 +2,16 @@
 
 Bethesda games from Oblivion and onward can be modded in very similar ways, so most of the guides in this section will be written in a way that can be applied to any game in that range.
 
+## Why No Mod Organizer 2?
+
+From my experience, Mod Organizer 2 makes for an unpleasant experience on the Steam Deck as it:
+
+- Added 2-4 _minutes_ to the launch time for any game I tried
+- Is sluggish to navigate
+- Caused unneeded complexity due to needing to reconfigure the paths for everything since the installation was copied from a different computer
+
+Therefore, my guides have been prepared such that we will configure everything on a Windows machine and skip the need for MO2 so that our games launch as fast as possible.
+
 ## List of Known-Incompatible Mods With the Steam Deck
 
 For some reason, there are certain mods that just don't function correctly on the Steam Deck and can cause crashing, freezing, or other undesired behaviour. Ensure that you do not include these mods in your lists, and if they are included in a premade list from Wabbajack, make sure you remove/disable them.
