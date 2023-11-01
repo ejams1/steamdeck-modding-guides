@@ -8,6 +8,7 @@ If you have any issues or guide requests, feel free to create an issue on this r
 
 1. [Bethesda Games (Elder Scrolls, Fallout)](guides/bethesda/bethesda.md)
 2. [Borderlands Series](guides/borderlands/borderlands.md)
+3. [RPG Maker Games](guides/rpgmaker/rpgmaker.md)
 
 ## Credits
 Omni - For the wonderful [Linux modding guides](https://github.com/Omni-guides/Wabbajack-Modlist-Linux) and trouble-shooting
