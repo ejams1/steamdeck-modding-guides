@@ -2,7 +2,7 @@
 
 Root Builder is a tool that authers can use to build mod lists that don't actually get installed to or touch the base game folder (i.e. where you installed your game).
 
-> **Note**
+> [!Note]
 > We will NOT be using Mod Organizer 2 on the Steam Deck and we will be overwriting the base game folder. This means you can only have ONE list installed at a time.
 
 For this example, I will be using the `Fallout: New Vegas` list [Begin Again](https://www.nexusmods.com/newvegas/mods/79547) but this guide should be applicable to _any_ list that uses Root Builder.For example, I have also used these steps for the `Oblivion` list `Last Seed`.
@@ -33,17 +33,17 @@ Make any other ini changes you'd like as well before we move the files to the St
 5. In the virtual file system, it shows the entire modlist put together as if though everything from the modlist was dropped into the game install directory, so we want to copy the whole thing out to a temporary location (i.e. on your desktop make a directory called `begin-again-extracted`) and copy that over to the steam deck; I prefer to use SSH and login to the deck with WinSCP but it doesn’t matter how you do it
     - If you mess around and get lost in explorer++ and cant get back to the directory, it was just open to the install folder for you Fallout New Vegas
 
-> **Warning**
+> [!Warning]
 > Linux treats folders with different casing (`data` vs. `Data`) as different folders, but Windows doesn’t. When copying over to the steam deck, make sure the casing is the same for the Data folder (it is lower case in the `Begin Again` installation). Alternatively, you can delete the contents of the game installation folder on your steam deck as all of the game files will be copied over along with the mod content, so that is probably the safer way to do it.
 
 6. Next, go into your `C:\Users\<YOURUSERNAME>\AppData\Local\FalloutNV` and copy the `plugins.txt` over to the deck. It needs to go into the equivalent spot on the deck which is in `$HOME/.steam/steamapps/compatdata/22380/c_drive/users/steamuser/AppData/Local/FalloutNV`. If you are installing a list for another game, you need to find the steam game ID for it - simply googling `steam gameid <game name>` will bring you the answer.
 
 7. Next, copy over the `ini`s you modified (originally from the `profiles` folder) to the equivalent place on the deck: `$HOME/.steam/steamapps/compatdata/22380/c_drive/users/steamuser/Documents/My Games/FalloutNV`
-    - Ensure that the ini setting `sD3DDevice=` is set to something, otherwise it will boot-loop. I left mine to what it was on my desktop (`sD3DDevice="NVIDIA GeForce RTX 3080"`) and that worked, so it doesn't need to specifically match the APU name of the steam deck
+    - Ensure that the ini setting `sD3DDevice=` is set to something, otherwise it will boot-loop. If you initially launched the game to generate ini's etc. then you should also have a file called `RenderInfo.txt` which should have the GPU name; for example, the Steam Deck shows `AMD Radeon Graphics (RADV VANGOGH)`. THIS NEEDS TO MATCH WHAT IS SET BY `sD3DDevice=`, otherwise you will still get a boot loop.
 
-8. Bethesda games prior to `Skyrim SE`/`Fallout 4` determined their load order by looking at the modified date of the plugins to determine load order, so while you need the plugins.txt file to tell the game _which_ mods to load, you also need to ensure the mods in your list have been modified in the order of your load order. If you had loaded the list in mod organizer 2 as you should have to test it out, then this will already be done for you although you can double-check by opening the `Data` folder and sorting by modified date to see if the plugins are correct
+9. Bethesda games prior to `Skyrim SE`/`Fallout 4` determined their load order by looking at the modified date of the plugins to determine load order, so while you need the plugins.txt file to tell the game _which_ mods to load, you also need to ensure the mods in your list have been modified in the order of your load order. If you had loaded the list in mod organizer 2 as you should have to test it out, then this will already be done for you although you can double-check by opening the `Data` folder and sorting by modified date to see if the plugins are correct
 
-9. Rename the `falloutNVLauncher.exe` to `falloutNVLauncher.exe.backup` and then rename the `nvse_launcher.exe` to `falloutNVLauncher.exe` - this will allow you to launch new vegas through steam. The same applies to other Bethesda games which all have their own respective launchers
+10. Rename the `falloutNVLauncher.exe` to `falloutNVLauncher.exe.backup` and then rename the `nvse_launcher.exe` to `falloutNVLauncher.exe` - this will allow you to launch new vegas through steam. The same applies to other Bethesda games which all have their own respective launchers
 
 At this point, the mod list should be functional on your steam deck! If you encounter performance issues, you can try a few things:
 
@@ -54,6 +54,4 @@ At this point, the mod list should be functional on your steam deck! If you enco
 - Enable `Allow Tearing` in the steam deck game profile - this will reduce input latency which makes it easier to aim since these games are first-person
 - You can try using `Variable Rate Shading` and/or using `FSR` in the steam deck game profile as other ways of trying to increase performance, but they may impact the visuals
 - Drop the resolution (steam deck is native 1280x800, try dropping it below that but make sure to keep it a 16:10 aspect ratio if you would like to avoid black bars at the top and bottom of the screen)
-- Disable SMT (hyperthreading) using the `PowerTools` decky plugin as SMT is currently bugged in the steam deck - this is apparently going to be fixed in SteamOS 3.5
-  - This is NOT recommended for Skyrim SE/Fallout 4 as the creation engine seems to utilize the extra threads better than older Bethesda games
 - You can try manually pinning the CPU/GPU frequencies high or low depending on where the bottleneck is (i.e. lower the CPU frequency to allow more power to go to the GPU in GPU-limited scenarios)
